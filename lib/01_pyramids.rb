@@ -4,19 +4,16 @@ def perform
 	case user_input
 	when 1
 		half_pyramid
-		puts "Going back to main menu in 3s"
 		sleep 3
 		perform
 		return
 	when 2
 		full_pyramid
-		puts "Going back to main menu in 3s"
 		sleep 3
 		perform
 		return
 	when 3
 		wtf_pyramid
-		puts "Going back to main menu in 3s"
 		sleep 3
 		perform
 		return
