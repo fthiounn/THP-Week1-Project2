@@ -42,6 +42,9 @@ def welcome_screen
 	puts "    Bienvenue sur le terminal NASA"
 	puts ""
 	puts ""
+
+
+
 end
 
 perform
