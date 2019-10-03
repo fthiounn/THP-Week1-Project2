@@ -4,17 +4,14 @@ def perform
 	case user_input
 	when 1
 		half_pyramid
-		sleep 3
 		perform
 		return
 	when 2
 		full_pyramid
-		sleep 3
 		perform
 		return
 	when 3
 		wtf_pyramid
-		sleep 3
 		perform
 		return
 	when 4
@@ -71,6 +68,8 @@ def half_pyramid
 		output[user_input-a] = "#"
 		puts output
 	end
+	print "Press any key to continue .. "
+	gets
 end
 
 def full_pyramid
@@ -95,17 +94,20 @@ def full_pyramid
 		output+="#"
 		user_input -= 1
 	end
+	print "Press any key to continue .. "
+	gets
 end
 
 def wtf_pyramid
 	system "clear"
 	user_input = 0
 
-	while user_input>25 || user_input<1
+	while (user_input>25 || user_input<1) || (user_input%2 == 0)
 		puts "Full Pyramid : Enter a number between 1 and 25"
 		print "> "
 		user_input = gets.to_i
 	end
+	user_input = user_input /2 
 	reverse = user_input
 	output = "";
 	puts "Voici la pyramide :"
@@ -131,6 +133,8 @@ def wtf_pyramid
 	output[user_input] = " "
 	output[output.size-user_input] = " "
 	puts output
+	print "Press any key to continue .. "
+	gets
 end
 
 perform
