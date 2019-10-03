@@ -100,10 +100,12 @@ end
 
 def wtf_pyramid
 	system "clear"
-	user_input = 0
-
-	while (user_input>25 || user_input<1) || (user_input%2 == 0)
-		puts "Full Pyramid : Enter a number between 1 and 25"
+	user_input = -1
+	puts "Full Pyramid : Enter an odd number between 1 and 25"
+	print "> "
+	user_input = gets.to_i
+	while user_input>25 || user_input<1 || user_input.even?
+		puts " Please enter an odd number between 1 and 25"
 		print "> "
 		user_input = gets.to_i
 	end
