@@ -24,8 +24,7 @@
 
 #main du prog
 def perform
-	user_input = menu
-	case user_input
+	case menu
 	when 1
 		play
 		perform
@@ -44,8 +43,6 @@ def perform
 	else
 		puts "ERREUR - menu function output bug"
 	end
-		
-		
 end
 
 #permet au user de choisir si il veux les statistiques ou bien jouer
@@ -88,32 +85,27 @@ end
 #lance une partie
 def play
 	game_state = 0
+	count = 0
 	user_input = 0
 	system "clear"
 	#boucle de Jeu
 	#1. afficher l'etat en cours
-	#2. proposer de jetter le dé ou bien de quitter
+	#2. proposer de jetter le dé 
 	#3. calcul du prochain game state et on boucle
 	while game_state != 10
-		print_game_state (game_state)
+		print_game_state(game_state, count)
 		user_input = 0
-		puts "Enter 1 to roll the dice, 2 to quit"
-		print "> "
-		while user_input < 1 || user_input > 2
-			user_input = gets.to_i
-		end
-		if user_input == 1
-			system "clear"
-			game_state = roll_dice(game_state)
-		else
-			return
-		end
+		puts "Press Enter to roll a dice .. "
+		gets
+		system "clear"
+		game_state = roll_dice(game_state)
+		count+=1
 	end
-	puts "VOUS AVEZ GAGNE FELICITATIONS"
-	print_win
+
+	print_win(count)
 end
 #on affiche le contenu correspondant au game state
-def print_game_state (game_state)
+def print_game_state (game_state, count)
 	case game_state
 		when 0
 			puts " "
@@ -127,7 +119,7 @@ def print_game_state (game_state)
 			puts "                ___|4"
 			puts "             ___|3"
 			puts "  o       ___|2"
-			puts " /|\\  ___|1    "            
+			puts " /|\\  ___|1          You rolled the dice #{count} times"            
 			puts " /_\\__|0             You are at Step : 0"
 		when 1
 			puts ""
@@ -141,7 +133,7 @@ def print_game_state (game_state)
 			puts "              ___|4"
 			puts "    o      ___|3"
 			puts "   /|\\  ___|2"
-			puts "   /_\\__|1    "            
+			puts "   /_\\__|1          You rolled the dice #{count} times"            
 			puts " ___|0             You are at Step : 1"
 		when 2
 			puts ""
@@ -155,7 +147,7 @@ def print_game_state (game_state)
 			puts "       o       ___|4"
 			puts "      /|\\  ___|3"
 			puts "      /_\\__|2"
-			puts "    ___|1"            
+			puts "    ___|1          You rolled the dice #{count} times"            
 			puts " ___|0             You are at Step : 2"
 		when 3
 			puts ""
@@ -169,7 +161,7 @@ def print_game_state (game_state)
 			puts "         /|\\  ___|4"
 			puts "         /_\\__|3"
 			puts "       ___|2"
-			puts "    ___|1    "            
+			puts "    ___|1          You rolled the dice #{count} times    "            
 			puts " ___|0             You are at Step : 3"
 		when 4
 			puts ""
@@ -183,7 +175,7 @@ def print_game_state (game_state)
 			puts "             /_\\__|4"
 			puts "          ___|3"
 			puts "       ___|2"
-			puts "    ___|1    "            
+			puts "    ___|1          You rolled the dice #{count} times    "            
 			puts " ___|0             You are at Step : 4"
 		when 5
 			puts ""
@@ -211,7 +203,7 @@ def print_game_state (game_state)
 			puts "             ___|4"
 			puts "          ___|3"
 			puts "       ___|2"
-			puts "    ___|1    "            
+			puts "    ___|1          You rolled the dice #{count} times    "            
 			puts " ___|0             You are at Step : 6"
 		when 7
 			puts ""
@@ -225,7 +217,7 @@ def print_game_state (game_state)
 			puts "             ___|4"
 			puts "          ___|3"
 			puts "       ___|2"
-			puts "    ___|1    "            
+			puts "    ___|1          You rolled the dice #{count} times    "            
 			puts " ___|0             You are at Step : 7"
 		when 8
 			puts ""
@@ -239,7 +231,7 @@ def print_game_state (game_state)
 			puts "             ___|4"
 			puts "          ___|3"
 			puts "       ___|2"
-			puts "    ___|1    "            
+			puts "    ___|1          You rolled the dice #{count} times    "            
 			puts " ___|0             You are at Step : 8"
 		when 9
 			puts ""
@@ -253,7 +245,7 @@ def print_game_state (game_state)
 			puts "             ___|4"
 			puts "          ___|3"
 			puts "       ___|2"
-			puts "    ___|1    "            
+			puts "    ___|1          You rolled the dice #{count} times    "            
 			puts " ___|0             You are at Step : 9"
 		when 10
 			puts "                               o"
@@ -267,7 +259,7 @@ def print_game_state (game_state)
 			puts "             ___|4"
 			puts "          ___|3"
 			puts "       ___|2"
-			puts "    ___|1    "            
+			puts "    ___|1          You rolled the dice #{count} times    "            
 			puts " ___|0             You are at Step : 10"
 		else
 			puts "ERROR with the game_state"
@@ -302,7 +294,7 @@ def roll_dice (game_state)
 	end
 end
 #Ecran de Victoire
-def print_win
+def print_win(count)
 	system "clear"
 	puts "     "
 	puts "    (  :"
@@ -312,7 +304,7 @@ def print_win
 	puts " (____).__|"
 	puts "  (___)__.|_____"
 	puts ""
-	puts " YOU WON !! CONGRATULATION"
+	puts " YOU WON in #{count} rolls !! CONGRATULATION"
 	puts ""
 	sleep(3)
 	puts "Press any key to continue  .. "
